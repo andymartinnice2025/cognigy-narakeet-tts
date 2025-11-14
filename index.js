@@ -76,4 +76,5 @@ app.post("/", async (req, res) => {
 // Cloud Run requires listening on the PORT env var
 const port = process.env.PORT || 8080;
 app.listen(port, () => {
-  console.log(`Cognigy-Narakeet TTS service running on port
+  console.log(`Cognigy-Narakeet TTS service running on port ${port}`);
+});
