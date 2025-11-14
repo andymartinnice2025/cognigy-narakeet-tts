@@ -5,7 +5,7 @@ const app = express();
 app.use(express.json());
 
 // Base Narakeet TTS endpoint for streaming (m4a)
-const NARAKEET_BASE_URL = "https://api.narakeet.com/text-to-speech/m4a";
+const NARAKEET_BASE_URL = "https://api.narakeet.com/text-to-speech/mp3";
 
 // Build final Narakeet URL with voice applied
 function buildNarakeetUrl(body) {
@@ -66,7 +66,7 @@ app.post("/", async (req, res) => {
     const arrayBuffer = await narakeetResponse.arrayBuffer();
     const audioBuffer = Buffer.from(arrayBuffer);
 
-    res.set("Content-Type", "audio/mp4");
+    res.set("Content-Type", "audio/mpeg");
     res.send(audioBuffer);
   } catch (err) {
     res.status(500).json({ error: "Internal server error", details: err.message });
