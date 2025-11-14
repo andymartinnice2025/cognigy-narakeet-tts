@@ -5,7 +5,7 @@ const app = express();
 app.use(express.json());
 
 // Narakeet endpoint returning WAV audio
-const NARAKEET_URL = "https://api.narakeet.com/text-to-speech/wav";
+const NARAKEET_URL = "https://api.narakeet.com/text-to-speech/m4a";
 
 app.post("/", async (req, res) => {
   try {
@@ -52,7 +52,7 @@ app.post("/", async (req, res) => {
     const arrayBuffer = await narakeetResponse.arrayBuffer();
     const audioBuffer = Buffer.from(arrayBuffer);
 
-    res.set("Content-Type", "audio/wav");
+    res.set("Content-Type", "audio/mp4");
     res.send(audioBuffer);
   } catch (err) {
     console.error("Unexpected error:", err);
